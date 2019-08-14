@@ -18,7 +18,7 @@
 				<configuration>
 					<filesets>
 						<fileset>
-							<directory>rcp</directory>
+							<directory>testDestination</directory>
 							<includes>
 								<include>artifacts.jar</include>
 								<include>content.jar</include>
@@ -40,9 +40,9 @@
 							<goal>publish-features-and-bundles</goal>
 						</goals>
 						<configuration>
-							<artifactRepositoryLocation>${project.basedir}/rcp</artifactRepositoryLocation>
-							<metadataRepositoryLocation>${project.basedir}/rcp</metadataRepositoryLocation>
-							<sourceLocation>${project.basedir}/rcp</sourceLocation>
+							<artifactRepositoryLocation>${project.basedir}/testDestination</artifactRepositoryLocation>
+							<metadataRepositoryLocation>${project.basedir}/testDestination</metadataRepositoryLocation>
+							<sourceLocation>${project.basedir}/testDestination</sourceLocation>
 						</configuration>
 					</execution>
 				</executions>

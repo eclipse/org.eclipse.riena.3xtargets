@@ -1,0 +1,63 @@
+<?xml version = "1.0"?>
+<project name = "Hello World Project" default = "buildTargets">
+	<property file="build.properties" />
+
+	<target name = "buildTargets">
+		<echo>Start Building TP</echo>
+
+		<antcall target="clearDestination">
+		</antcall>
+
+		<antcall target="copyBinary">
+		</antcall>
+
+		<antcall target="copyFeatures">
+		</antcall>
+
+		<antcall target="copyPlugins">
+		</antcall>
+
+		<antcall target="generateMetaData">
+		</antcall>
+	</target>
+
+	<target name="clearDestination">
+		<delete includeemptydirs="true">
+			<fileset dir="${destinationTp}">
+				<include name = "**/*.*"/>
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="copyBinary">
+		<copy todir="${destinationTp}/binary">
+			<fileset dir="${structuredTp}/binary">
+				<include name="*.*"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="copyFeatures">
+		<copy todir="${destinationTp}/features">
+			<fileset dir="${structuredTp}/features">
+				<include name="*.*"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="copyPlugins">
+		<copy todir="${destinationTp}/plugins" flatten="true">
+			<fileset dir="${structuredTp}/plugins" >
+				<include name="**/*.jar"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="generateMetaData">
+		<exec dir="${basedir}" executable="cmd">
+			<arg value="/C"/>
+			<arg line="mvn clean process-resources" />
+		</exec>
+	</target>
+
+</project>
